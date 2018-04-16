@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<InvalidSearchValue /> Shapshot should render <InvalidSearchValue /> in invalid state 1`] = `
+<span
+  className="header__content-input--invalid"
+>
+  mocks children
+</span>
+`;
+
+exports[`<InvalidSearchValue /> Shapshot should render <InvalidSearchValue /> in valid state 1`] = `
+<span
+  className="hide"
+>
+  mocks children
+</span>
+`;

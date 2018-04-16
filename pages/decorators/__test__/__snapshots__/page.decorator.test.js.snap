@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Page /> Shapshot <Page /> 1`] = `
+<React.Fragment>
+  <SideEffect(Head)>
+    <meta
+      charSet="utf-8"
+    />
+    <meta
+      content="width=device-width, initial-scale=1"
+      name="viewport"
+    />
+    <link
+      href="/_next/static/style.css"
+      rel="stylesheet"
+    />
+    <link
+      crossorigin="anonymous"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+      rel="stylesheet"
+    />
+    <script
+      crossOrigin="anonymous"
+      defer={true}
+      integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+"
+      src="https://use.fontawesome.com/releases/v5.0.10/js/all.js"
+    />
+  </SideEffect(Head)>
+  <footer>
+    <Link
+      href="/"
+    >
+      <a>
+        netflixroilette
+      </a>
+    </Link>
+  </footer>
+</React.Fragment>
+`;

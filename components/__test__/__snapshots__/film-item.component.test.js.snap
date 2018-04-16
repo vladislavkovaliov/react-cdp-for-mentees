@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<FilmItem /> Shapshot <FilmItem /> 1`] = `
+<React.Fragment>
+  <div
+    className="film-item"
+  >
+    <span
+      className="rating"
+    />
+    <div
+      className="film-item__img"
+      style={
+        Object {
+          "backgroundImage": "url(undefined)",
+        }
+      }
+    />
+    <div
+      className="film-item__footer"
+    >
+      <div
+        className="film-item__footer-desc"
+      >
+        <Link
+          href={
+            Object {
+              "pathname": "/film-info",
+              "query": Object {
+                "id": undefined,
+              },
+            }
+          }
+        >
+          <p />
+        </Link>
+        <span>
+          2007
+        </span>
+      </div>
+      <div
+        className="film-item__footer-gender"
+      >
+        drama & western
+      </div>
+    </div>
+  </div>
+</React.Fragment>
+`;

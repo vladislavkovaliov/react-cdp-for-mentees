@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Wrapper /> Shapshot should render <Wrapper /> with children 1`] = `
+<div
+  className="wrapper"
+>
+  <div>
+    mocks children
+  </div>
+</div>
+`;
+
+exports[`<Wrapper /> Shapshot should render <Wrapper /> without children 1`] = `
+<div
+  className="wrapper"
+/>
+`;

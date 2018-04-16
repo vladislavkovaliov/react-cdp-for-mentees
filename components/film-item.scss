@@ -1,0 +1,66 @@
+@import '../constants/_variables.scss';
+
+.film-item {
+  max-width: 192px;
+  width: 100%;
+  position: relative;
+
+  margin: {
+    right: 14px;
+    bottom: 8px;
+  };
+
+  .rating {
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    color: white;
+    background-color: rgba(53, 191, 0, 0.7);
+    border-radius: 50%;
+    height: 32px;
+    width: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__img {
+    background: {
+      position: 50%;
+      size: cover;
+      repeat: no-repeat;
+    };
+    height: 280px;
+    width: 100%;
+  }
+
+  &__footer {
+    &-desc {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      margin-top: 4px;
+      text-transform: uppercase;
+      align-items: center;
+
+      span {
+        border: 1px solid $grey;
+        border-radius: 4px;
+        padding: 2px;
+      }
+    }
+
+    &-desc,
+    &-gender {
+      font: {
+        size: 12px;
+      }
+    }
+
+    &-gender {
+      font: {
+        weight: 300;
+      }
+    }
+  }
+}

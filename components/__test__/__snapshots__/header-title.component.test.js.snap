@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<HeaderTitle /> Shapshot should render <HeaderTitle /> with children 1`] = `
+<div
+  className="header__title"
+>
+  <p>
+    netflixroulette
+  </p>
+  <div>
+    mocks children
+  </div>
+</div>
+`;
+
+exports[`<HeaderTitle /> Shapshot should render <HeaderTitle /> without children 1`] = `
+<div
+  className="header__title"
+>
+  <p>
+    netflixroulette
+  </p>
+</div>
+`;

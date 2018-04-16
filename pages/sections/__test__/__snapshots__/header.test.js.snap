@@ -1,0 +1,129 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Header /> Shapshot should render <HeaderContent /> with invalid input's value 1`] = `
+<HeaderWrapper>
+  <form
+    action="#"
+    method="#"
+    onSubmit={[Function]}
+  >
+    <HeaderTitle />
+    <div
+      className="header__content"
+    >
+      <div
+        className="header__content-title"
+      >
+        find your movie
+      </div>
+      <input
+        autoFocus={true}
+        className="header__content-input"
+        onChange={[Function]}
+        type="text"
+        value="Action"
+      />
+      <InvalidSearchValue
+        isValid={false}
+      >
+        Should be more than 3 symbols
+      </InvalidSearchValue>
+    </div>
+    <div
+      className="header__footer"
+    >
+      <div>
+        <p>
+          search by
+        </p>
+        <RadioButton
+          id="title"
+          isChecked={false}
+          name="filter"
+          onChange={[Function]}
+          text="title"
+          value="title"
+        />
+        <RadioButton
+          id="genres"
+          isChecked={true}
+          name="filter"
+          onChange={[Function]}
+          text="genres"
+          value="genres"
+        />
+      </div>
+      <button
+        id="search-btn"
+        type="submit"
+      >
+        search
+      </button>
+    </div>
+  </form>
+</HeaderWrapper>
+`;
+
+exports[`<Header /> Shapshot should render <HeaderContent /> with valid input's value 1`] = `
+<HeaderWrapper>
+  <form
+    action="#"
+    method="#"
+    onSubmit={[Function]}
+  >
+    <HeaderTitle />
+    <div
+      className="header__content"
+    >
+      <div
+        className="header__content-title"
+      >
+        find your movie
+      </div>
+      <input
+        autoFocus={true}
+        className="header__content-input"
+        onChange={[Function]}
+        type="text"
+        value="Action"
+      />
+      <InvalidSearchValue
+        isValid={true}
+      >
+        Should be more than 3 symbols
+      </InvalidSearchValue>
+    </div>
+    <div
+      className="header__footer"
+    >
+      <div>
+        <p>
+          search by
+        </p>
+        <RadioButton
+          id="title"
+          isChecked={false}
+          name="filter"
+          onChange={[Function]}
+          text="title"
+          value="title"
+        />
+        <RadioButton
+          id="genres"
+          isChecked={true}
+          name="filter"
+          onChange={[Function]}
+          text="genres"
+          value="genres"
+        />
+      </div>
+      <button
+        id="search-btn"
+        type="submit"
+      >
+        search
+      </button>
+    </div>
+  </form>
+</HeaderWrapper>
+`;

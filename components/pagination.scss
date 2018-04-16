@@ -1,0 +1,37 @@
+@import '../constants/_variables.scss';
+
+ul.pagination {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+
+  & li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4px 8px;
+    margin: 14px 4px 14px 4px;
+    border: 1px solid #000000;
+    border-radius: 8px;
+    height: 18px;
+
+    @media screen and (max-width: 368px) {
+      &.break {
+        display: none;
+      }
+    }
+
+    a {
+      cursor: pointer;
+      outline: none;
+    }
+
+    &.break {
+      border: none;
+    }
+
+    &.selected {
+      border-color: $red;
+    }
+  }
+}

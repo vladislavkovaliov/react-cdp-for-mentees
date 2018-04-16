@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<RadioButton /> Shapshot should render <RadioButton /> with default option 1`] = `
+<React.Fragment>
+  <input
+    checked={true}
+    id="title"
+    name="title"
+    onChange={[MockFunction]}
+    type="radio"
+    value="title"
+  />
+  <label
+    htmlFor="title"
+  />
+</React.Fragment>
+`;
+
+exports[`<RadioButton /> Shapshot should render <RadioButton /> without default option 1`] = `
+<React.Fragment>
+  <input
+    id="title"
+    name="title"
+    onChange={[MockFunction]}
+    type="radio"
+    value="title"
+  />
+  <label
+    htmlFor="title"
+  />
+</React.Fragment>
+`;

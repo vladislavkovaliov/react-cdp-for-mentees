@@ -1,0 +1,80 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Pagination /> Shaphot Shapshot <Pagination /> via desktop 1`] = `
+<PaginationBoxView
+  activeClassName="selected"
+  breakLabel="..."
+  containerClassName="pagination"
+  disableInitialCallback={false}
+  disabledClassName="disabled"
+  marginPagesDisplayed={1}
+  nextClassName="next"
+  nextLabel="Next"
+  pageCount={10}
+  pageRangeDisplayed={3}
+  previousClassName="previous"
+  previousLabel="Previous"
+  updateViewport={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          null,
+          Object {},
+        ],
+        Array [
+          Object {
+            "isMobile": false,
+          },
+        ],
+      ],
+    }
+  }
+  window={
+    Object {
+      "isMobile": false,
+    }
+  }
+/>
+`;
+
+exports[`<Pagination /> Shaphot Shapshot <Pagination /> via mobile 1`] = `
+<PaginationBoxView
+  activeClassName="selected"
+  breakLabel="..."
+  containerClassName="pagination"
+  disableInitialCallback={false}
+  disabledClassName="disabled"
+  marginPagesDisplayed={0}
+  nextClassName="next"
+  nextLabel="Next"
+  pageCount={10}
+  pageRangeDisplayed={0}
+  previousClassName="previous"
+  previousLabel="Previous"
+  updateViewport={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          null,
+          Object {},
+        ],
+        Array [
+          Object {
+            "isMobile": false,
+          },
+        ],
+        Array [
+          Object {
+            "isMobile": false,
+          },
+        ],
+      ],
+    }
+  }
+  window={
+    Object {
+      "isMobile": true,
+    }
+  }
+/>
+`;

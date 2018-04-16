@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<HeaderWrapper /> Shapshot should render <HeaderWrapper /> 1`] = `
+<div
+  className="header"
+>
+  <div>
+    <div>
+      mocks children
+    </div>
+  </div>
+</div>
+`;
