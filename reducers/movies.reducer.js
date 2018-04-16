@@ -36,6 +36,11 @@ export function movies(state = initialState.movies, action) {
 
     case UPDATE_SORT_BY:
       newState = cloneDeep(state);
+      newState.sortBy = payload.sortBy;
+
+      if(newState.data.length === 0) {
+        return newState;
+      }
 
       if(payload.sortBy === 'release_date') {
         newState.data = newState.data.slice().sort(sortByReleaseDate);

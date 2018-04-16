@@ -1,8 +1,7 @@
 import React from 'react';
 import { Pagination, mapStateToProps, mapDispatchToProps } from '../pagination.component';
 import { updateViewport } from '../../actions/viewport.action';
-import withRedux from 'next-redux-wrapper';
-import { makeStore } from '../../utils/create-store.util';
+import { connect } from 'react-redux';
 
 import shallow from 'enzyme/shallow';
 
@@ -10,18 +9,14 @@ jest.mock('../../actions/viewport.action', () => ({
   updateViewport: jest.fn(),
 }));
 
-jest.mock('../../utils/create-store.util', () => ({
-  makeStore: jest.fn(),
+jest.mock('react-redux', () => ({
+  connect: jest.fn(() => jest.fn()),
 }));
-
-jest.mock('next-redux-wrapper', () => {
-  return jest.fn(() => jest.fn());
-});
 
 describe('<Pagination />', () => {
   describe('connect()', () => {
     test('should call connect with mapStateToProps and mapDispatchToProps', () => {
-      expect(withRedux).toHaveBeenCalledWith(makeStore, mapStateToProps, mapDispatchToProps);
+      expect(connect).toHaveBeenCalledWith(mapStateToProps, mapDispatchToProps);
     });
   });
 

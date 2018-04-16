@@ -1,11 +1,12 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import isEmpty from 'lodash/isEmpty';
 
-import dynamic from 'next/dynamic';
 import { RadioButton } from '../../components/radio-btn.component';
 import { FilmItem } from '../../components/film-item.component';
 import { ContentHeaderWrapper } from '../../components/content-header-wrapper.component';
+import Pagination from '../../components/pagination.component';
 import '../../components/pagination.scss';
 
 import { MAX_LIMIT_MOVIES } from '../../constants/values.constants';
@@ -14,8 +15,6 @@ import { updateSearchingParameters } from '../../actions/searching-parameters.ac
 import slice from 'lodash/slice';
 
 import { searchMovies, updateSortByValue, clearMovies } from '../../actions/movies.action';
-
-const Pagination = dynamic(import('../../components/pagination.component'));
 
 export class MainContent extends Component {
   state = {
@@ -54,14 +53,20 @@ export class MainContent extends Component {
       searchMovies,
       updateSearchingParameters,
       searchingParameters,
-      clearMovies
+      clearMovies,
+      updateSortByValue,
     } = this.props;
 
-    clearMovies();
-    updateSearchingParameters({ sortBy, offset: 0 });
-    searchMovies(Object.assign({}, searchingParameters, { sortBy, offset: 0}));
-
     this.setState({ sortBy, currentPage: 0 });
+    updateSearchingParameters({ sortBy, offset: 0 });
+    updateSortByValue({ sortBy, offset: 0 });
+
+    if(isEmpty(searchingParameters.search) && isEmpty(searchingParameters.searchBy)) {
+      return;
+    }
+
+    clearMovies();
+    searchMovies(Object.assign({}, searchingParameters, { sortBy, offset: 0}));
   };
 
   render() {
@@ -127,7 +132,7 @@ PropTypes.defaultProps = {
 };
 
 PropTypes.propTypes = {
-  movies: PropTypes.arrayOf({}),
+  movies: PropTypes.array,
 };
 
 export const mapStateToProps = ({ movies, searchingParameters }) => {

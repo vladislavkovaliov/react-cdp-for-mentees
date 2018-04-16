@@ -1,4 +1,4 @@
-describe.skip('Index page', () => {
+describe('Index page', () => {
   describe('Page is loaded', () => {
     before(() => {
       cy.visit('/');
@@ -15,34 +15,8 @@ describe.skip('Index page', () => {
     });
 
     it('should be visible director button', () => {
-      cy.get('label[for="director"]')
+      cy.get('label[for="genres"]')
         .should('be.visible');
-    });
-
-    it('should be clickable title button', () => {
-      cy.get('label[for="title"]')
-        .click()
-        .should('be.visible')
-        .should('have.css', 'background-color');
-    });
-
-    it('should be clickable director button', () => {
-      cy.get('label[for="director"]')
-        .click()
-        .should('be.visible')
-        .should('have.css', 'background-color');
-    });
-
-    it('should be visible sort by date', () => {
-      cy.get('label[for="date"]')
-        .should('be.visible')
-    });
-
-    it('should be clickable sort by date', () => {
-      cy.get('label[for="date"]')
-        .click()
-        .should('be.visible')
-        .should('have.css', 'color');
     });
 
     it('should be visible sort by release', () => {
@@ -50,23 +24,9 @@ describe.skip('Index page', () => {
         .should('be.visible')
     });
 
-    it('should be clickable sort by release', () => {
-      cy.get('label[for="release"]')
-        .click()
-        .should('be.visible')
-        .should('have.css', 'color');
-    });
-
     it('should be visible sort by rating', () => {
       cy.get('label[for="rating"]')
         .should('be.visible');
-    });
-
-    it('should be clickable sort by rating', () => {
-      cy.get('label[for="rating"]')
-        .click()
-        .should('be.visible')
-        .should('have.css', 'color');
     });
   });
 });
@@ -94,8 +54,8 @@ describe('Searching film', () => {
       cy.visit('/');
     });
 
-    it('should input director into search field', () => {
-      cy.get('label[for="director"]')
+    it('should input genres into search field', () => {
+      cy.get('label[for="genres"]')
         .click();
 
       cy.get('.header__content-input')
@@ -114,27 +74,11 @@ describe('Sorting films', () => {
   before(() => {
     cy.visit('/');
 
+
     cy.get('.header__content-input')
       .type('Blade')
-      .type('{enter}');
-  });
-
-  describe('Sort by release date', () => {
-    it('should sort film by release date', () => {
-      cy.get('.content__header-sort label[for="release"]')
-        .click();
-
-      cy.get('.films-list')
-        .children()
-        .should('have.not.length', 0);
-    });
-
-    it('should year of first more then last film', () => {
-      const firstFilm = Cypress.$('.films-list .film-item:first-child .film-item__footer-desc span').text();
-      const lastFilm = Cypress.$('.films-list .film-item:last-child .film-item__footer-desc span').text();
-
-      expect(firstFilm > lastFilm).to.be.true;
-    });
+      .type('{enter}')
+      .wait(2000);
   });
 
   describe('Sort by rating', () => {
@@ -150,6 +94,26 @@ describe('Sorting films', () => {
     it('should rating of first more then last film', () => {
       const firstFilm = Cypress.$('.films-list .film-item:first-child span.rating').text();
       const lastFilm = Cypress.$('.films-list .film-item:last-child span.rating').text();
+
+      expect(firstFilm > lastFilm).to.be.true;
+    });
+  });
+
+  describe('Sort by release date', () => {
+    it('should sort film by release date', () => {
+      cy.get('.content__header-sort label[for="release"]')
+        .click();
+
+      cy.wait(2000);
+
+      cy.get('.films-list')
+        .children()
+        .should('have.not.length', 0);
+    });
+
+    it('should year of first more then last film', () => {
+      const firstFilm = Cypress.$('.films-list .film-item:first-child .film-item__footer-desc span').text();
+      const lastFilm = Cypress.$('.films-list .film-item:last-child .film-item__footer-desc span').text();
 
       expect(firstFilm > lastFilm).to.be.true;
     });

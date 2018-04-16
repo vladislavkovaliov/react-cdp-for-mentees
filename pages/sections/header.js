@@ -11,8 +11,8 @@ import { isValueInputValue } from '../../utils/is-valid-input-value.util';
 
 export class HeaderContent extends Component {
   state = {
-    search: 'Action', // TODO: remove it
-    searchBy: 'genres',
+    search: '',
+    searchBy: 'title',
     isValid: false,
   };
 

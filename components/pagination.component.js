@@ -1,7 +1,6 @@
 import React from 'react';
-import { makeStore } from '../utils/create-store.util';
-import withRedux from 'next-redux-wrapper';
 import ReactPaginate from 'react-paginate';
+import { connect } from "react-redux";
 
 import debounce from 'lodash/debounce';
 
@@ -54,8 +53,7 @@ export const mapDispatchToProps = (dispatch) => ({
   updateViewport: payload => updateViewport(dispatch, payload),
 });
 
-export default withRedux(
-  makeStore,
+export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(Pagination);
