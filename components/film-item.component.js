@@ -34,11 +34,11 @@ export function FilmItem({
   );
 }
 
-PropTypes.propTypes = {
-  id: PropTypes.string.isRequired,
+FilmItem.propTypes = {
+  id: PropTypes.number.isRequired,
   posterPath: PropTypes.string.isRequired,
   genres: PropTypes.array.isRequired,
   releaseDate: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  vote_average: PropTypes.string.isRequired,
+  voteAverage: PropTypes.number.isRequired,
 };

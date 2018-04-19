@@ -3,9 +3,15 @@ import ReactPaginate from 'react-paginate';
 import { connect } from "react-redux";
 
 import debounce from 'lodash/debounce';
-
+import { makeStore } from '../utils/create-store.util';
 import { updateViewport } from '../actions/viewport.action';
-import { PAGE_RANGE_DISPLAYED, MARGIN_PAGES_DISPLAYED, MOBILE_WIDTH, DEBOUNCE_VIEWPORT_UPDATE } from '../constants/values.constants';
+import { 
+  PAGE_RANGE_DISPLAYED, 
+  MARGIN_PAGES_DISPLAYED, 
+  MOBILE_WIDTH, 
+  DEBOUNCE_VIEWPORT_UPDATE 
+} from '../constants/values.constants';
+import withRedux from 'next-redux-wrapper';
 
 export function onResizeWindow(callback) {
   return function() {
@@ -23,17 +29,20 @@ export class Pagination extends React.Component {
   componentWillMount() {
     const { updateViewport } = this.props;
 
-    updateViewport({ isMobile: window.innerWidth < MOBILE_WIDTH });
+    // updateViewport({ isMobile: window.innerWidth < MOBILE_WIDTH });
   }
 
   componentDidMount() {
     const { updateViewport } = this.props;
 
-    window.addEventListener('resize', debounce(onResizeWindow(updateViewport), DEBOUNCE_VIEWPORT_UPDATE));
+    window.addEventListener(
+      'resize', 
+      debounce(onResizeWindow(updateViewport), DEBOUNCE_VIEWPORT_UPDATE)
+    );
   }
 
   render() {
-    const { isMobile } = this.props.window;
+    const { isMobile = false } = this.props.window || { isMobile: false };
 
     return (
       <ReactPaginate

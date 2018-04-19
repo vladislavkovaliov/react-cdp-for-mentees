@@ -14,7 +14,11 @@ import { updateSearchingParameters } from '../../actions/searching-parameters.ac
 
 import slice from 'lodash/slice';
 
-import { searchMovies, updateSortByValue, clearMovies } from '../../actions/movies.action';
+import { 
+  searchMovies, 
+  updateSortByValue, 
+  clearMovies } from '../../actions/movies.action';
+import FilmsList from '../../components/films-list.component';
 
 export class MainContent extends Component {
   state = {
@@ -100,22 +104,7 @@ export class MainContent extends Component {
           </div>
         </ContentHeaderWrapper>
         <div className="content">
-          <div className="films-list">
-            {
-              movies.length ?
-                movies.map(movie => (
-                  <FilmItem
-                    id={movie.id}
-                    key={movie.id}
-                    voteAverage={movie.vote_average}
-                    posterPath={movie.poster_path}
-                    genres={movie.genres}
-                    releaseDate={movie.release_date}
-                    title={movie.title}
-                  />
-                )) : <div style={{ textAlign: "center", width: "100%" }}>No result</div>
-            }
-          </div>
+          <FilmsList />
           { isShouldPaginationShow ? <Pagination
             forcePage={currentPage}
             onPageChange={this.onPageChange}

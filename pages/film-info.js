@@ -11,11 +11,68 @@ import withRedux from 'next-redux-wrapper';
 import { HeaderWrapper } from '../components/header.component';
 import { HeaderTitle } from '../components/header-title.component';
 import { searchMovie } from '../actions/movie.action';
+import { clearMovies, searchMovies } from '../actions/movies.action';
 import { Page } from './decorators/page.decorator';
 import { Wrapper } from '../components/wrapper.component';
 import { ContentHeaderWrapper } from '../components/content-header-wrapper.component';
+import FilmsList from '../components/films-list.component';
+import { Pagination } from '../components/pagination.component';
+import { MAX_LIMIT_MOVIES } from '../constants/values.constants';
+import { updateSearchingParameters } from '../actions/searching-parameters.action';
+
+import '../components/pagination.scss';
 
 export class FilmInfo extends Component {
+  state = {
+    currentPage: 0,
+  };
+
+  componentWillUnmount() {
+    const { clearMovies } = this.props;
+
+    clearMovies();
+  }
+
+  onPageChange = ({ selected }) => {
+    const { updateSearchingParameters, searchMovies } = this.props;
+    const { currentPage } = this.state;
+
+    const direction = selected > currentPage;
+
+    if(direction) {
+      updateSearchingParameters({ offset: (selected * MAX_LIMIT_MOVIES) });
+    } else {
+      updateSearchingParameters({ offset: (selected * MAX_LIMIT_MOVIES) });
+    }
+
+    searchMovies(
+      Object.assign(
+        {},
+        this.props.searchingParameters,
+        { offset: (selected * MAX_LIMIT_MOVIES) }
+      )
+    );
+
+    this.setState({ currentPage: selected });
+  };
+
+  componentWillMount() {
+    const { clearMovies, searchMovies, updateSearchingParameters } = this.props;
+    const search = this.props.movie.genres[0];
+    const payload = {
+      search,
+      searchBy: 'genres',
+      offset: 0,
+      limit: 10,
+      sortBy: 'vote_average',
+      sortOrder: 'desc',
+    };
+
+    clearMovies();
+    searchMovies(payload);
+    updateSearchingParameters(payload);
+  }
+
   render() {
     const { 
       poster_path: posterPath,
@@ -23,15 +80,23 @@ export class FilmInfo extends Component {
       tagline,
       vote_average: voteAverage,
       release_date: releaseDate,
-      overview
+      overview,
+      genres,
+      runtime,
     } = this.props.movie;
+    const { total, pageCount } = this.props;  
+    const { data: movies = [] } = this.props.movies;
+    const { currentPage } = this.state;
+    const isShouldPaginationShow = movies.length && total > MAX_LIMIT_MOVIES;
 
     return (
       <Page>
         <Wrapper>
           <HeaderWrapper>
             <HeaderTitle>
-              <Link href="/"><a>Back</a></Link>
+              <Link href="/">
+                <a>Search</a>
+              </Link>
             </HeaderTitle>
             <div className="film-info__content">
               <img className="film-info__img" src={`${posterPath}`} />
@@ -44,7 +109,7 @@ export class FilmInfo extends Component {
                 <p className="tagline">{tagline}</p>
                 <div className="film-info__year_and_time">
                   <span className="year">{releaseDate}</span>
-                  <span className="time">154 min</span>
+                  <span className="time">{runtime} min</span>
                 </div>
                 <div className="overview">{overview}</div>
                 <p className="director">Director: Quentin Tarantino</p>
@@ -54,8 +119,16 @@ export class FilmInfo extends Component {
             </div>
           </HeaderWrapper>
           <ContentHeaderWrapper>
-
+            <div className="content__header-result">Similar by {genres[0].toLowerCase()}</div>
           </ContentHeaderWrapper>
+          <div className="content">
+            <FilmsList />
+            { isShouldPaginationShow ? <Pagination
+              forcePage={currentPage}
+              onPageChange={this.onPageChange}
+              pageCount={pageCount}
+            /> : null }
+          </div>
         </Wrapper>
       </Page>
     );
@@ -63,11 +136,27 @@ export class FilmInfo extends Component {
 }
 
 FilmInfo.getInitialProps = async ({ store, isServer, pathname, query }) => {
-  await searchMovie(store.dispatch, query);
+  const movie = await searchMovie(store.dispatch, query);
 
   return { isServer };
 };
 
-export default withRedux(makeStore, (state) => {
-  return { movie: state.movie };
-})(FilmInfo);
+export const mapStateToProps = ({ movie, movies, searchingParameters }) => ({
+  movie,
+  total: movies.total,
+  movies,
+  pageCount: Math.ceil(movies.total / movies.limit),
+  searchingParameters,
+});
+
+export const mapDispatchToProps = (dispatch) => ({
+  clearMovies:               payload => clearMovies(dispatch, null),
+  searchMovies:              payload => searchMovies(dispatch, payload),
+  updateSearchingParameters: payload => updateSearchingParameters(dispatch, payload),
+});
+
+export default withRedux(
+  makeStore, 
+  mapStateToProps,
+  mapDispatchToProps,
+)(FilmInfo);

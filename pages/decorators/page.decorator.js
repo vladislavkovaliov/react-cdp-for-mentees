@@ -9,9 +9,10 @@ export function Page({ children }) {
         <meta charSet="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="stylesheet" href="/_next/static/style.css" />
-        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
-              integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
-              crossorigin="anonymous"/>
+        <link rel="stylesheet" 
+              href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" 
+              integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" 
+              crossorigin="anonymous" />
         <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js"
                 integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+"
                 crossOrigin="anonymous"></script>
