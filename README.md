@@ -1,5 +1,7 @@
 Swagger-ui: http://react-cdp-api.herokuapp.com/api-docs
 
+Demo: http://react-cdp.herokuapp.com/
+
 For installing all node modules run in terminal next command:
 ```
 npm install
