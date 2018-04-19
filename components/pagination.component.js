@@ -42,6 +42,7 @@ export class Pagination extends React.Component {
   }
 
   render() {
+    // TODO: wait when bug will be fixed
     const { isMobile = false } = this.props.window || { isMobile: false };
 
     return (
