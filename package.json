@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p $PORT",
     "test": "node node_modules/jest/bin/jest.js --coverage",
     "heroku-postbuild": "next build"
   },
