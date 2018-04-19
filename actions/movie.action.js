@@ -10,7 +10,6 @@ import { FETCH_MOVIE } from '../constants/types.constants';
 
 export function searchMovie(dispatch, payload) {
   const { id } = payload;
-  console.log(22242);
 
   return axiosMovies.get(`/${id}`)
     .then(({ data }) => {

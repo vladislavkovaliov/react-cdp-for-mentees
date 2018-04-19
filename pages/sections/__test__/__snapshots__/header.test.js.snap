@@ -21,7 +21,7 @@ exports[`<Header /> Shapshot should render <HeaderContent /> with invalid input'
         className="header__content-input"
         onChange={[Function]}
         type="text"
-        value="Action"
+        value=""
       />
       <InvalidSearchValue
         isValid={false}
@@ -38,7 +38,7 @@ exports[`<Header /> Shapshot should render <HeaderContent /> with invalid input'
         </p>
         <RadioButton
           id="title"
-          isChecked={false}
+          isChecked={true}
           name="filter"
           onChange={[Function]}
           text="title"
@@ -46,7 +46,7 @@ exports[`<Header /> Shapshot should render <HeaderContent /> with invalid input'
         />
         <RadioButton
           id="genres"
-          isChecked={true}
+          isChecked={false}
           name="filter"
           onChange={[Function]}
           text="genres"
@@ -85,7 +85,7 @@ exports[`<Header /> Shapshot should render <HeaderContent /> with valid input's 
         className="header__content-input"
         onChange={[Function]}
         type="text"
-        value="Action"
+        value=""
       />
       <InvalidSearchValue
         isValid={true}
@@ -102,7 +102,7 @@ exports[`<Header /> Shapshot should render <HeaderContent /> with valid input's 
         </p>
         <RadioButton
           id="title"
-          isChecked={false}
+          isChecked={true}
           name="filter"
           onChange={[Function]}
           text="title"
@@ -110,7 +110,7 @@ exports[`<Header /> Shapshot should render <HeaderContent /> with valid input's 
         />
         <RadioButton
           id="genres"
-          isChecked={true}
+          isChecked={false}
           name="filter"
           onChange={[Function]}
           text="genres"

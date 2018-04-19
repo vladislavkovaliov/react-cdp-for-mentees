@@ -7,9 +7,7 @@ export function searchingParameters(state = initialState.searchingParameters, ac
   switch(type) {
     case UPDATE_SEACHING_PARAMETERS: 
       return Object.assign({}, state, payload);
-      break;
-    default: 
+    default:
       return state;
-      break;
   }
 }

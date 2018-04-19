@@ -1,5 +1,5 @@
 // ./pages/film-info.js
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import Link from 'next/link';
 
 import 'babel-polyfill';
@@ -17,10 +17,17 @@ import { Wrapper } from '../components/wrapper.component';
 import { ContentHeaderWrapper } from '../components/content-header-wrapper.component';
 import FilmsList from '../components/films-list.component';
 import { Pagination } from '../components/pagination.component';
-import { MAX_LIMIT_MOVIES } from '../constants/values.constants';
+import {
+  MAX_LIMIT_MOVIES,
+  DEFAULT_SORT_BY,
+  DEFAULT_OFFSET,
+  DEFAULT_SORT_ORDER,
+} from '../constants/values.constants';
 import { updateSearchingParameters } from '../actions/searching-parameters.action';
 
 import '../components/pagination.scss';
+
+const DEFAULT_SEARCH_BY = 'genres';
 
 export class FilmInfo extends Component {
   state = {
@@ -61,11 +68,11 @@ export class FilmInfo extends Component {
     const search = this.props.movie.genres[0];
     const payload = {
       search,
-      searchBy: 'genres',
-      offset: 0,
-      limit: 10,
-      sortBy: 'vote_average',
-      sortOrder: 'desc',
+      searchBy:  DEFAULT_SEARCH_BY,
+      offset:    DEFAULT_OFFSET,
+      limit:     MAX_LIMIT_MOVIES,
+      sortBy:    DEFAULT_SORT_BY,
+      sortOrder: DEFAULT_SORT_ORDER,
     };
 
     clearMovies();
@@ -136,7 +143,7 @@ export class FilmInfo extends Component {
 }
 
 FilmInfo.getInitialProps = async ({ store, isServer, pathname, query }) => {
-  const movie = await searchMovie(store.dispatch, query);
+  await searchMovie(store.dispatch, query);
 
   return { isServer };
 };

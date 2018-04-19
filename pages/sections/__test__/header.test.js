@@ -26,7 +26,7 @@ jest.mock('../../../actions/searching-parameters.action', () => ({
 
 describe('<Header />', () => {
   describe('mapDispatchToProps', () => {
-    test('should call searchMovies action', () => {
+    test('should call searchMovies() action', () => {
       const result = mapDispatchToProps(null /* dispatch */);
 
       result.searchMovies({});
@@ -34,10 +34,28 @@ describe('<Header />', () => {
       expect(searchMovies).toHaveBeenCalled();
     });
 
+    test('should call updateSearchingParameters() action', () => {
+      const result = mapDispatchToProps(null /* dispatch */);
+
+      result.updateSearchingParameters({});
+
+      expect(updateSearchingParameters).toHaveBeenCalled();
+    });
+
+    test('should call clearMovies() action', () => {
+      const result = mapDispatchToProps(null /* dispatch */);
+
+      result.clearMovies();
+
+      expect(clearMovies).toHaveBeenCalled();
+    });
+
     test('should return object with method searchMovies', () => {
       const result = mapDispatchToProps(null /* dispatch */);
 
       expect(result).toHaveProperty('searchMovies');
+      expect(result).toHaveProperty('updateSearchingParameters');
+      expect(result).toHaveProperty('clearMovies');
     });
   });
 
@@ -132,7 +150,7 @@ describe('<Header />', () => {
       wrapper.instance().onSubmit(event);
 
       expect(event.preventDefault).toHaveBeenCalled();
-      expect(mockSearchMovies).toHaveBeenCalled();
+      expect(mockSearchMovies).not.toHaveBeenCalled();
     });
 
     test('onSubmit() with invalid filter value', () => {
@@ -154,7 +172,7 @@ describe('<Header />', () => {
         },
         preventDefault: jest.fn(),
       };
-      wrapper.instance().state.searchValue = 'mock';
+      wrapper.instance().state.search = 'mock';
       wrapper.instance().state.searchBy = '';
 
       wrapper.instance().onSubmit(event);
@@ -182,7 +200,7 @@ describe('<Header />', () => {
         },
         preventDefault: jest.fn(),
       };
-      wrapper.instance().state.searchValue = 'mock';
+      wrapper.instance().state.search = 'mock';
       wrapper.instance().state.searchBy = 'mock';
       wrapper.instance().onSubmit(event);
 

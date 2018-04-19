@@ -45,7 +45,7 @@ export function movies(state = initialState.movies, action) {
       if(payload.sortBy === 'release_date') {
         newState.data = newState.data.slice().sort(sortByReleaseDate);
       } else if (payload.sortBy === 'vote_average') {
-        newState.data.sort(sortByRating());
+        newState.data.sort(sortByRating);
       }
 
       return newState;

@@ -8,11 +8,17 @@ import { HeaderTitle } from '../../components/header-title.component';
 import { updateSearchingParameters } from '../../actions/searching-parameters.action';
 import { InvalidSearchValue } from '../../components/invalid-search-value.component';
 import { isValueInputValue } from '../../utils/is-valid-input-value.util';
+import {
+  DEFAULT_SEARCH_BY,
+  EMPTY_STRING,
+  MAX_LIMIT_MOVIES,
+  DEFAULT_OFFSET,
+} from '../../constants/values.constants';
 
 export class HeaderContent extends Component {
   state = {
-    search: '',
-    searchBy: 'title',
+    search: EMPTY_STRING,
+    searchBy: DEFAULT_SEARCH_BY,
     isValid: false,
   };
 
@@ -29,8 +35,8 @@ export class HeaderContent extends Component {
     }
 
     clearMovies();
-    updateSearchingParameters({ search, searchBy, offset: 0, limit: 10 });
-    searchMovies({ search, searchBy, sortBy, sortOrder, offset: 0, internalOffset: 0 });
+    updateSearchingParameters({ search, searchBy, offset: DEFAULT_OFFSET, limit: MAX_LIMIT_MOVIES });
+    searchMovies({ search, searchBy, sortBy, sortOrder, offset: DEFAULT_OFFSET, internalOffset: 0 });
   };
 
   onChangeInput = (event) => {
@@ -99,9 +105,9 @@ export const mapStateToProps = (state) => ({
 });
 
 export const mapDispatchToProps = (dispatch) => ({
-  searchMovies: payload => searchMovies(dispatch, payload),
+  searchMovies:              payload => searchMovies(dispatch, payload),
   updateSearchingParameters: payload => updateSearchingParameters(dispatch, payload),
-  clearMovies: payload => clearMovies(dispatch, null),
+  clearMovies:               payload => clearMovies(dispatch, null),
 });
 
 export const Header = connect(mapStateToProps, mapDispatchToProps)(HeaderContent);

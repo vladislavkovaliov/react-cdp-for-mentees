@@ -21,11 +21,6 @@ exports[`<Pagination /> Shaphot Shapshot <Pagination /> via desktop 1`] = `
           null,
           Object {},
         ],
-        Array [
-          Object {
-            "isMobile": false,
-          },
-        ],
       ],
     }
   }
@@ -57,16 +52,6 @@ exports[`<Pagination /> Shaphot Shapshot <Pagination /> via mobile 1`] = `
         Array [
           null,
           Object {},
-        ],
-        Array [
-          Object {
-            "isMobile": false,
-          },
-        ],
-        Array [
-          Object {
-            "isMobile": false,
-          },
         ],
       ],
     }

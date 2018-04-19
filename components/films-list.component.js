@@ -1,8 +1,5 @@
-import React, { Component, Fragment } from 'react';
-import PropTypes from "prop-types";
-
-import { makeStore } from '../utils/create-store.util';
-import withRedux from 'next-redux-wrapper';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import { FilmItem } from './film-item.component';
 
@@ -45,8 +42,7 @@ export const mapStateToProps = ({ movies }) => {
 
 export const mapDispatchToProps = (dispatch) => ({});
 
-export default withRedux(
-  makeStore,
+export default connect(
   mapStateToProps,
   mapDispatchToProps,
 )(FilmsList);

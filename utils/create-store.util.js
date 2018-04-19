@@ -3,34 +3,41 @@ import logger from 'redux-logger';
 import { reducers } from '../reducers';
 import thunkMiddleware from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import { MAX_LIMIT_MOVIES } from '../constants/values.constants';
+import {
+  MAX_LIMIT_MOVIES,
+  DEFAULT_SORT_BY,
+  DEFAULT_SEARCH_BY,
+  DEFAULT_OFFSET,
+  DEFAULT_SORT_ORDER,
+  EMPTY_STRING,
+} from '../constants/values.constants';
 
 const initMovie = {};
 const initMovies = {
-  data: [],
-  total: 0,
-  offset: 0,
-  limit: MAX_LIMIT_MOVIES,
-  sortBy: 'vote_average',
-  sortOrder: 'desc',
+  data:      [],
+  total:     0,
+  offset:    DEFAULT_OFFSET,
+  limit:     MAX_LIMIT_MOVIES,
+  sortBy:    DEFAULT_SORT_BY,
+  sortOrder: DEFAULT_SORT_ORDER,
 };
 const initWindows = {
   isMobile: false,
 };
 const initSearchingParameters = {
-  search: '',
-  searchBy: '',
-  limit: MAX_LIMIT_MOVIES,
-  offset: 0,
-  total: 0,
-  sortBy: 'vote_average',
-  sortOrder: 'desc',
+  search:    EMPTY_STRING,
+  searchBy:  DEFAULT_SEARCH_BY,
+  limit:     MAX_LIMIT_MOVIES,
+  offset:    DEFAULT_OFFSET,
+  total:     0,
+  sortBy:    DEFAULT_SORT_BY,
+  sortOrder: DEFAULT_SORT_ORDER,
 };
 
 export const initialState = {
-  movies: initMovies,
-  movie: initMovie,
-  window: initWindows,
+  movies:              initMovies,
+  movie:               initMovie,
+  window:              initWindows,
   searchingParameters: initSearchingParameters,
 };
 
