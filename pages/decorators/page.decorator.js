@@ -8,6 +8,7 @@ export function Page({ children }) {
       <Head>
         <meta charSet="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>React CDP App</title>
         <link rel="stylesheet" href="/_next/static/style.css" />
         <link rel="stylesheet" 
               href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" 
