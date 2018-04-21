@@ -8,7 +8,11 @@
     "build": "next build",
     "start": "next start -p $PORT",
     "test": "node node_modules/jest/bin/jest.js --coverage",
-    "heroku-postbuild": "next build"
+    "test:e2e": "./node_modules/.bin/wdio wdio.conf.js --env heroku",    
+    "test:e2e-heroku": "./node_modules/.bin/wdio wdio.conf.js --env heroku",
+    "test:e2e-local": "./node_modules/.bin/wdio wdio.conf.js --env local",
+    "heroku-postbuild": "next build",
+    "postinstall": "./node_modules/selenium-standalone/bin/selenium-standalone install"
   },
   "author": "",
   "license": "ISC",
@@ -17,10 +21,11 @@
     "@zeit/next-sass": "^0.1.2",
     "async_hooks": "^1.0.0",
     "axios": "^0.18.0",
-    "chromedriver": "^2.38.0",
+    "chromedriver": "2.36.0",
     "compression": "^1.6.0",
     "css-loader": "^0.28.11",
     "lodash": "^4.17.5",
+    "minimist": "^1.2.0",
     "moment": "^2.22.0",
     "next": "^5.1.0",
     "next-redux-wrapper": "^1.3.5",
@@ -36,6 +41,7 @@
     "redux-replicate": "^3.0.9",
     "redux-thunk": "^2.2.0",
     "sass-loader": "^6.0.7",
+    "should": "^13.2.1",
     "style-loader": "^0.20.3",
     "url-loader": "^1.0.1",
     "webdriverio": "^4.12.0"
@@ -63,6 +69,7 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
+    "chai": "^4.1.2",
     "cypress": "^2.1.0",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
@@ -70,6 +77,9 @@
     "jest": "^22.4.3",
     "moxios": "^0.4.0",
     "nock": "^9.2.5",
-    "wdio-mocha-framework": "^0.5.13"
+    "selenium-server-standalone": "^2.53.1",
+    "selenium-standalone": "^6.14.0",
+    "wdio-mocha-framework": "^0.5.13",
+    "wdio-spec-reporter": "^0.1.4"
   }
 }
