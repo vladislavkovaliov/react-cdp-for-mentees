@@ -4,7 +4,7 @@ const {
   timeout,
   seacrhBtn,
   pagination,
-} = require('./config');
+} = require('../config');
 
 function clickBtnById(id) {
   browser

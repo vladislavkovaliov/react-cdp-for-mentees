@@ -21,6 +21,16 @@ For running unit test run in terminal next command:
 npm test
 ```
 
+For running e2e test via heroku:
+```
+npm run test:e2e-heroku
+```
+
+For running e2e test via local:
+```
+npm run test:e2e-local
+```
+
 *Node: code coverage will be generated.
 
 Coverage description:

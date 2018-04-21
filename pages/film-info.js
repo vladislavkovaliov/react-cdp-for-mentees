@@ -5,6 +5,7 @@ import Link from 'next/link';
 import 'babel-polyfill';
 
 import './index.scss';
+import './film-info.scss';
 
 import { makeStore } from '../utils/create-store.util';
 import withRedux from 'next-redux-wrapper';

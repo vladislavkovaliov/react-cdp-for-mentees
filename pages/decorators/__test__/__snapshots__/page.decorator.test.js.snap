@@ -10,6 +10,9 @@ exports[`<Page /> Shapshot <Page /> 1`] = `
       content="width=device-width, initial-scale=1"
       name="viewport"
     />
+    <title>
+      React CDP App
+    </title>
     <link
       href="/_next/static/style.css"
       rel="stylesheet"
@@ -35,6 +38,11 @@ exports[`<Page /> Shapshot <Page /> 1`] = `
         netflixroilette
       </a>
     </Link>
+    <a
+      href="https://github.com/vladislavkovaliov/react-cdp-for-mentees"
+    >
+      github
+    </a>
   </footer>
 </React.Fragment>
 `;

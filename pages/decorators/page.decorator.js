@@ -23,6 +23,8 @@ export function Page({ children }) {
         <Link href="/">
           <a>netflixroilette</a>
         </Link>
+
+        <a href='https://github.com/vladislavkovaliov/react-cdp-for-mentees'>github</a>
       </footer>
     </Fragment>
   );
