@@ -11,8 +11,7 @@
     "test:e2e": "./node_modules/.bin/wdio wdio.conf.js --env heroku",    
     "test:e2e-heroku": "./node_modules/.bin/wdio wdio.conf.js --env heroku",
     "test:e2e-local": "./node_modules/.bin/wdio wdio.conf.js --env local",
-    "heroku-postbuild": "next build",
-    "postinstall": "./node_modules/selenium-standalone/bin/selenium-standalone install"
+    "heroku-postbuild": "next build"
   },
   "author": "",
   "license": "ISC",
