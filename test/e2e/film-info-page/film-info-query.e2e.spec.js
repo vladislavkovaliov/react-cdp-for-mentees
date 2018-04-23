@@ -32,11 +32,9 @@ describe('Film info page', () => {
 
   it('should description be visible', () => {
     browser.waitUntil(() => {
-      return browser.isVisible(`${filmInfo}__data > div.overview`);
+      return browser.isVisible(`${filmInfo}__data div.overview`);
     });
   });
-
-  // content__header-result
 
   it('should similar result name be visible', () => {
     browser.waitUntil(() => {
@@ -44,4 +42,61 @@ describe('Film info page', () => {
     });
   });
 
+  it('should page by click not an arrow', () => {
+    browser.waitForExist(filmItem, timeout);
+
+    const page = browser
+      .getAttribute(`${pagination} li.selected a`, 'aria-label');
+
+    browser
+      .element(`${pagination} li.selected + li`)
+      .click();
+
+    browser.waitUntil(() => {
+      const newPage = browser
+        .getAttribute(`${pagination} li.selected a`, 'aria-label');
+
+        return page !== newPage;
+    }, timeout);
+  });
+
+  it('should page by click an arrow', () => {
+    browser.waitForExist(filmItem, timeout);
+
+    const page = browser
+      .getAttribute(`${pagination} li.selected a`, 'aria-label');
+
+    browser
+      .element(`${pagination} li.next`)
+      .click();
+
+    browser.waitUntil(() => {
+      const newPage = browser
+        .getAttribute(`${pagination} li.selected a`, 'aria-label');
+
+      return page !== newPage;
+    }, timeout);
+  });
+
+  it('should page by click an arrow and return back', () => {
+    browser.waitForExist(filmItem, timeout);
+
+    const page = browser
+      .getAttribute(`${pagination} li.selected a`, 'aria-label');
+
+    browser
+      .element(`${pagination} li.next`)
+      .click();
+
+    browser.waitUntil(() => {
+      const newPage = browser
+        .getAttribute(`${pagination} li.selected a`, 'aria-label');
+
+      browser
+        .element(`${pagination} li.previous`)
+        .click();
+        
+      return page === newPage;
+    }, timeout);
+  });
 });
