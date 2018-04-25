@@ -17,7 +17,7 @@ import { Page } from './decorators/page.decorator';
 import { Wrapper } from '../components/wrapper.component';
 import { ContentHeaderWrapper } from '../components/content-header-wrapper.component';
 import FilmsList from '../components/films-list.component';
-import { Pagination } from '../components/pagination.component';
+import Pagination from '../components/pagination.component';
 import {
   MAX_LIMIT_MOVIES,
   DEFAULT_SORT_BY,

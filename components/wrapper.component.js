@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import './wrapper.scss';
 
-export function Wrapper({ children }) {
-  return (
-    <div className="wrapper">{children}</div>
-  );
+export class Wrapper extends Component {
+  render() {
+    const { children } = this.props;
+
+    return (
+      <div className="wrapper">{children}</div>
+    );
+  }
 }
 
 Wrapper.defaultProps = {
